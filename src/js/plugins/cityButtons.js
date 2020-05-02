@@ -1,21 +1,21 @@
 import $ from 'jquery';
+import { onLoadHtmlSuccess } from '../core/includes';
 
-const durationInMilli = 300;
+const durationInMilli = 500;
 
 function filterByCity(city) {
     $('[wm-city]').each(function(i,e) {
-        const isTarget = $(e).attr('wm-city') === city || city == null;
+        const isTarget = $(e).attr('wm-city') === city || city === null;
         if (isTarget) {
             $(e).parent().removeClass('d-none')
-            $(e).fadeIn(durationInMilli);
+            $(e).hide().fadeIn(durationInMilli);
         } else {
-            $(e).fadeOut(durationInMilli, () => {
+            $(e).hide(1, () => {
                 $(e).parent().addClass('d-none')
             });
         }
     })
 }
-
 
 $.fn.cityButtons = function() {
     const cities = new Set;
@@ -29,7 +29,7 @@ $.fn.cityButtons = function() {
         return btn;
     });
     
-    const btnAll = $('<button>').addClass(['btn', 'btn-info', 'active']).html('All');
+    const btnAll = $('<button>').addClass(['btn', 'btn-info']).html('All');
     btnAll.click(e => filterByCity(null));
     
     btns.push(btnAll);
@@ -41,4 +41,6 @@ $.fn.cityButtons = function() {
     return this;
 }
 
-$('[wm-city-buttons]').cityButtons();
+onLoadHtmlSuccess(function (){
+    $('[wm-city-buttons]').cityButtons();
+})
