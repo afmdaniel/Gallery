@@ -24,7 +24,7 @@ $.fn.cityButtons = function() {
     });
     
     const btns = Array.from(cities).map(city => {
-        const btn = $('<button>').addClass(['btn', 'btn-info']).html(city);
+        const btn = $('<button>').addClass(['btn', 'btn-outline-info']).html(city);
         btn.click(e => filterByCity(city));
         return btn;
     });
