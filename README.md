@@ -1,6 +1,8 @@
 # Gallery
 Sample of a website aimed at publishing travel photos and memorable moments
 
+[Gallery webpage](assets/img/screenshot.png)
+
 This is a product of my learning process and studies. Supported by [Cod3r Cursos Online](https://www.cod3r.com.br/)
 
 ## Clone
